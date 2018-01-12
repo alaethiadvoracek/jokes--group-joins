@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Jokes</title>
+    <link rel="stylesheet" href="styles/blues.css">
+    <script src="vendors/jquery.min.js" charset="utf-8"></script>
+    <script src="scripts/client.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <header><h1>Awesome Jokes</h1></header>
+    <main>
+      <section>
+        <h2>Add a Joke</h2>
+        <label>Whose Joke: </label><input type='text' id='whoseJokeIn' /><br>
+        <label>Question: </label><input type='text' id='question' /><br>
+        <label>Punchline: </label><input type='text' id='punchlineIn' /><br>
+        <label>Funniness: </label><input type='number' id='funninessIn' min=1 max=8 />
+        <button id='addJokeButton'>Add Joke</button>
+      </section>
+      <section>
+        <h2>All Jokes</h2>
+        <button id="seeAllJokes">See All Jokes</button>
+        <div id='outputDiv'>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

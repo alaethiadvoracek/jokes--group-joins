@@ -106,9 +106,15 @@ router.put('/:id', (req,res) => {
         });
 });
 
-router.get('/singleauthor/:author', (req, res) => {
+router.get('/singleauthor/:author/:topFive', (req, res) => {
     // query DB
-    const queryText = 'SELECT * FROM jokes JOIN authors ON authors.id = authors_id WHERE authors.whoseJoke = $1';
+    let queryText;
+    console.log(req.params.author, req.params.topFive);
+    if(req.params.topFive == 'true'){
+        queryText = 'SELECT * FROM jokes JOIN authors ON authors.id = authors_id WHERE authors.whoseJoke = $1';
+    } else{
+        queryText = 'SELECT * FROM jokes JOIN authors ON authors.id = authors_id WHERE authors.whoseJoke = $1 ORDER BY funniness DESC LIMIT 5';
+    }
     pool.query(queryText, [req.params.author])
         // runs on successful query
         .then((result) => {

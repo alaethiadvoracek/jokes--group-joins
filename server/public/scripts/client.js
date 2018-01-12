@@ -28,7 +28,7 @@ function onReady() {
             console.log('Funniness can\'t go lower!');
         }
     });
-    $('#outputDiv').on ('click', '.btn-seeAll', getSingleAuthor);
+    $('#submitSearch').on ('click',  getSingleAuthor);
     $('#seeAllJokes').on('click', getJokes);
 
 
@@ -152,10 +152,11 @@ function displayJoke(joke) {
     $('.joke:last').data(joke);
 }
 function getSingleAuthor() {
-    var author = $(this).parents('div').data().whosejoke;
+    var author =  $('#searchAuthors').val();
+    var topFive = $('#jokeTopFive').val();
     $.ajax({
         method: 'GET',
-        url: '/jokes/singleauthor/' + author,
+        url: '/jokes/singleauthor/' + author + '/' + topFive,
         success: function(response){
             // console.log('get + author', response);
             displayAllJokes(response);
